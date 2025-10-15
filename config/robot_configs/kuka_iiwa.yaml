@@ -1,0 +1,43 @@
+# ============================================================
+# 文件: robot_config/kuka_iiwa.yaml
+# ============================================================
+robot_config:
+  robot_name: "kuka_iiwa14"
+  robot_type: "manipulator"
+  manufacturer: "KUKA"
+  
+  usd_path: "/Isaac/Robots/KUKA/iiwa14/iiwa14.usd"
+  prim_path: "/World/KUKA"
+  
+  root_position: [3.0, 0.0, 0.0]
+  root_orientation: [0.0, 0.0, 180.0]
+  
+  end_effector:
+    prim_name: "iiwa_link_ee"
+    type: "schunk_wsg50"
+    joint_names: ["wsg50_finger_left_joint", "wsg50_finger_right_joint"]
+    open_positions: [0.055, -0.055]
+    close_positions: [0.0, 0.0]
+    action_deltas: [0.005, -0.005]
+    max_effort: [80.0, 80.0]
+  
+  joints:
+    dof: 7
+    names: ["iiwa_joint_1", "iiwa_joint_2", "iiwa_joint_3", "iiwa_joint_4",
+            "iiwa_joint_5", "iiwa_joint_6", "iiwa_joint_7"]
+    home_positions: [0.0, 0.0, 0.0, -1.57, 0.0, 1.57, 0.0]
+    velocity_limits: [1.48, 1.48, 1.75, 2.27, 2.44, 3.14, 3.14]
+    effort_limits: [320.0, 320.0, 176.0, 176.0, 110.0, 40.0, 40.0]
+  
+  controller:
+    type: "rmpflow"
+    config_file: "iiwa_rmpflow.yaml"
+  
+  workspace:
+    x_range: [-0.82, 0.82]
+    y_range: [-0.82, 0.82]
+    z_range: [0.0, 1.35]
+    
+  physics:
+    mass: 30.0
+    payload_capacity: 14.0

@@ -1,0 +1,24 @@
+# ============================================================
+# 文件: task_config/base_env.yaml
+# ============================================================
+
+# 机器人配置 - Franka Panda
+panda_root_postion: [0.0, -0.8, 0.0]  # Panda机器人基座位置 [x, y, z]
+panda_root_orientation: [0.0, 0.0, 0.0]  # Panda机器人基座姿态 [roll, pitch, yaw] 单位:度
+
+# 机器人配置 - Franka FR3
+root_postion: [0.0, 0.8, 0.0]  # FR3机器人基座位置 [x, y, z]
+root_orientation: [0.0, 0.0, 0.0]  # FR3机器人基座姿态 [roll, pitch, yaw] 单位:度
+
+# 相机配置
+position: [1.5, 0.0, 1.5]  # 相机位置 [x, y, z]
+rotation: [0.7071, 0.0, 0.0, -0.7071]  # 相机旋转四元数 [w, x, y, z] - 俯视45度
+
+# 相机内参
+H: 720  # 图像高度(像素)
+W: 1280  # 图像宽度(像素)
+fxy: 800.0  # 相机焦距 fx=fy
+
+# 场景配置
+ground: true  # 是否显示地面
+modify_light: true  # 是否修改默认光照

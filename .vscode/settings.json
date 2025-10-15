@@ -1,0 +1,37 @@
+{
+    "python.defaultInterpreterPath": "/home/hljin/isaacsim/kit/python/bin/python3",
+    
+    "python.analysis.extraPaths": [
+        "/home/hljin/isaacsim/exts",
+        "/home/hljin/isaacsim/extscache",
+        "/home/hljin/isaacsim/exts/omni.isaac.core",
+        "/home/hljin/isaacsim/exts/omni.isaac.sensor",
+        "/home/hljin/isaacsim/kit/extscore",
+        "/home/hljin/isaacsim/extsPhysics"
+    ],
+    
+    "python.autoComplete.extraPaths": [
+        "/home/hljin/isaacsim/exts",
+        "/home/hljin/isaacsim/extscache"
+    ],
+    
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": false,
+    
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "/home/hljin/isaacsim/exts:/home/hljin/isaacsim/extscache",
+        "LD_LIBRARY_PATH": "/home/hljin/isaacsim/kit/libs",
+        "CARB_APP_PATH": "/home/hljin/isaacsim/kit"
+    },
+    
+    "code-runner.executorMap": {
+        "python": "/home/hljin/isaacsim/python.sh"
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    
+    "files.associations": {
+        "*.yaml": "yaml",
+        "*.yml": "yaml"
+    }
+}

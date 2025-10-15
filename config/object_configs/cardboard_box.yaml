@@ -1,0 +1,52 @@
+# ============================================================
+# 文件: conveyor_config/cardboard_box.yaml
+# ============================================================
+box_config:
+  # 基本信息
+  box_name: "cardboard_box_"
+  box_type: "storage_container"
+  manufacturer: "Generic"
+  
+  # Isaac Sim资源路径
+  usd_path: "/Isaac/Props/Warehouse/Cardboard/CardboardBox01.usd"
+  prim_path: "/World/StorageBox"
+  
+  # 箱子位置和姿态
+  root_position: [0.8, 0.5, 0.0]
+  root_orientation: [0.0, 0.0, 0.0]  # euler angles (roll, pitch, yaw) in degrees
+  
+  # 几何尺寸 (单位: 米)
+  dimensions:
+    length: 0.4  # x方向
+    width: 0.4   # y方向
+    height: 0.3  # z方向
+    
+  # 内部尺寸 (考虑纸板厚度)
+  internal_dimensions:
+    length: 0.38
+    width: 0.38
+    height: 0.28
+    wall_thickness: 0.01
+  
+  # 物理属性
+  physics:
+    mass: 0.5  # kg
+    is_static: true  # 箱子是否固定不动
+    enable_collision: true
+    friction:
+      static_friction: 0.8
+      dynamic_friction: 0.6
+      restitution: 0.1  # 弹性系数
+  
+  # 码垛配置
+  stacking:
+    max_layers: 5  # 最大堆叠层数
+    layer_height: 0.06  # 每层物体高度(含间隙)
+    grid_size: [3, 3]  # 每层网格: 3x3
+    object_spacing: 0.02  # 物体间距
+    
+  # 视觉属性
+  visual:
+    color: [0.8, 0.7, 0.5]  # RGB
+    texture: "cardboard"
+    visible: true

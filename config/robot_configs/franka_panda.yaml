@@ -1,0 +1,51 @@
+# ============================================================
+# 文件: robot_config/franka_panda.yaml
+# ============================================================
+robot_config:
+  # 基本信息
+  robot_name: "franka_panda"
+  robot_type: "manipulator"
+  manufacturer: "Franka Emika"
+  
+  # Isaac Sim资源路径
+  usd_path: "/Isaac/Robots/Franka/franka_alt_fingers.usd"
+  prim_path: "/World/Franka"
+  
+  # 机器人基座位置和姿态
+  root_position: [0.0, 0.0, 0.0]
+  root_orientation: [0.0, 0.0, 0.0]  # euler angles (roll, pitch, yaw) in degrees
+  
+  # 末端执行器配置
+  end_effector:
+    prim_name: "panda_hand"
+    type: "parallel_gripper"
+    joint_names: ["panda_finger_joint1", "panda_finger_joint2"]
+    open_positions: [0.04, 0.04]
+    close_positions: [0.0, 0.0]
+    action_deltas: [0.005, 0.005]
+    max_effort: [100.0, 100.0]
+  
+  # 关节配置
+  joints:
+    dof: 7
+    names: ["panda_joint1", "panda_joint2", "panda_joint3", "panda_joint4", 
+            "panda_joint5", "panda_joint6", "panda_joint7"]
+    home_positions: [0.0, -0.785, 0.0, -2.356, 0.0, 1.571, 0.785]
+    velocity_limits: [2.175, 2.175, 2.175, 2.175, 2.610, 2.610, 2.610]
+    effort_limits: [87.0, 87.0, 87.0, 87.0, 12.0, 12.0, 12.0]
+  
+  # 控制器配置
+  controller:
+    type: "rmpflow"
+    config_file: "franka_rmpflow.yaml"
+  
+  # 工作空间限制
+  workspace:
+    x_range: [-0.855, 0.855]
+    y_range: [-0.855, 0.855]
+    z_range: [0.0, 1.19]
+    
+  # 物理属性
+  physics:
+    mass: 18.0  # kg
+    payload_capacity: 3.0  # kg

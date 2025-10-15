@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🚀 Isaac Sim: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/isaac_python_wrapper.py",
+            "args": [
+                "${file}"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONUNBUFFERED": "1"
+            }
+        },
+        {
+            "name": "🎯 Isaac Sim: view_base.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/isaac_python_wrapper.py",
+            "args": [
+                "${workspaceFolder}/scripts/view_base.py"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "⚙️ Isaac Sim: with config",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/isaac_python_wrapper.py",
+            "args": [
+                "${workspaceFolder}/scripts/view_base.py",
+                "--config",
+                "${workspaceFolder}/config/base_env.yaml"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

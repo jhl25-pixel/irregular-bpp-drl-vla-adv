@@ -1,0 +1,99 @@
+# ============================================================
+# 文件: conveyor_config/standard_belt_small.yaml
+# ============================================================
+conveyor_config:
+  # 基本信息
+  conveyor_name: "standard_belt_small"
+  conveyor_type: "flat_belt"
+  manufacturer: "Generic Industrial"
+  
+  # Isaac Sim资源路径
+  usd_path: "/Isaac/Props/Warehouse/Conveyors/ConveyorBelt_A01.usd"
+  prim_path: "/World/Conveyor"
+  
+  # 传送带位置和姿态
+  root_position: [-0.5, 0.0, 0.0]
+  root_orientation: [0.0, 0.0, 0.0]  # euler angles (roll, pitch, yaw) in degrees
+  
+  # 几何尺寸 (单位: 米)
+  dimensions:
+    length: 2.0    # 传送带长度
+    width: 0.6     # 传送带宽度
+    height: 0.8    # 传送带高度(到地面)
+    belt_thickness: 0.02  # 皮带厚度
+  
+  # 运动参数
+  motion:
+    velocity: 0.15  # 传送带速度 (m/s)
+    direction: [1.0, 0.0, 0.0]  # 运动方向向量 (归一化)
+    acceleration: 0.05  # 加速度 (m/s²)
+    max_velocity: 0.5   # 最大速度限制
+    can_reverse: true   # 是否支持反向
+    
+  # 物理属性
+  physics:
+    belt_friction:
+      static_friction: 0.7  # 皮带表面静摩擦
+      dynamic_friction: 0.5  # 皮带表面动摩擦
+      restitution: 0.2
+    surface_material: "rubber"
+    enable_collision: true
+    
+  # 传送带区域定义
+  zones:
+    loading_zone:  # 装载区
+      start: 0.0
+      end: 0.4
+      position_offset: [0.2, 0.0, 0.0]  # 相对传送带原点
+    
+    transport_zone:  # 运输区
+      start: 0.4
+      end: 1.6
+      position_offset: [1.0, 0.0, 0.0]
+    
+    unloading_zone:  # 卸载区
+      start: 1.6
+      end: 2.0
+      position_offset: [1.8, 0.0, 0.0]
+  
+  # 物体生成配置
+  object_spawning:
+    enabled: true
+    spawn_zone: "loading_zone"  # 在哪个区域生成物体
+    spawn_rate: 2.0  # 生成速率 (秒/个)
+    spawn_height_offset: 0.05  # 生成高度偏移
+    random_position_range:  # 生成位置随机范围
+      x: 0.0
+      y: 0.1  # 在宽度方向上随机±0.1m
+      z: 0.0
+    max_objects_on_belt: 5  # 传送带上最多同时存在的物体数
+  
+  # 传感器配置
+  sensors:
+    - sensor_type: "proximity"
+      name: "loading_sensor"
+      position: [0.2, 0.0, 0.9]  # 世界坐标
+      detection_range: 0.3
+      
+    - sensor_type: "proximity"
+      name: "picking_sensor"
+      position: [1.0, 0.0, 0.9]
+      detection_range: 0.3
+      
+    - sensor_type: "proximity"
+      name: "exit_sensor"
+      position: [1.8, 0.0, 0.9]
+      detection_range: 0.3
+  
+  # 视觉属性
+  visual:
+    belt_color: [0.2, 0.2, 0.2]  # 深灰色
+    frame_color: [0.3, 0.3, 0.35]  # 金属灰
+    show_direction_arrow: true
+    visible: true
+  
+  # 控制接口
+  control:
+    can_start_stop: true
+    can_adjust_speed: true
+    speed_control_range: [0.0, 0.5]  # 速度可调范围

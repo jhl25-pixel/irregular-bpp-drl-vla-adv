@@ -1,0 +1,43 @@
+# ============================================================
+# 文件: robot_config/ur5e.yaml
+# ============================================================
+robot_config:
+  robot_name: "ur5e"
+  robot_type: "manipulator"
+  manufacturer: "Universal Robots"
+  
+  usd_path: "/Isaac/Robots/UniversalRobots/ur5e/ur5e.usd"
+  prim_path: "/World/UR5e"
+  
+  root_position: [2.0, 0.0, 0.0]
+  root_orientation: [0.0, 0.0, 0.0]
+  
+  end_effector:
+    prim_name: "ee_link"
+    type: "robotiq_2f85"
+    joint_names: ["finger_joint", "left_inner_knuckle_joint"]
+    open_positions: [0.0, 0.0]
+    close_positions: [0.8, 0.8]
+    action_deltas: [0.01, 0.01]
+    max_effort: [235.0, 235.0]
+  
+  joints:
+    dof: 6
+    names: ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint",
+            "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
+    home_positions: [0.0, -1.57, 0.0, -1.57, 0.0, 0.0]
+    velocity_limits: [3.14, 3.14, 3.14, 3.14, 3.14, 3.14]
+    effort_limits: [150.0, 150.0, 150.0, 28.0, 28.0, 28.0]
+  
+  controller:
+    type: "rmpflow"
+    config_file: "ur5e_rmpflow.yaml"
+  
+  workspace:
+    x_range: [-0.85, 0.85]
+    y_range: [-0.85, 0.85]
+    z_range: [0.0, 1.35]
+    
+  physics:
+    mass: 20.6
+    payload_capacity: 5.0

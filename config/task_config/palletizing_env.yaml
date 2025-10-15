@@ -1,0 +1,84 @@
+# ============================================================
+# 文件: task_config/palletizing_env.yaml
+# ============================================================
+
+# 机器人配置
+panda_root_postion: [0.0, -0.8, 0.0]  # Franka Panda机器人基座位置
+panda_root_orientation: [0.0, 0.0, 0.0]  # 欧拉角(度)
+
+root_postion: [0.0, 0.8, 0.0]  # FR3机器人基座位置
+root_orientation: [0.0, 0.0, 0.0]  # 欧拉角(度)
+
+# 相机配置
+position: [1.5, 0.0, 1.5]  # 相机位置
+rotation: [0.7071, 0.0, 0.0, -0.7071]  # 相机旋转四元数 (w, x, y, z) - 俯视角度
+
+# 相机内参
+H: 720  # 图像高度
+W: 1280  # 图像宽度
+fxy: 800.0  # 焦距 (fx = fy)
+
+# 场景配置
+ground: true  # 是否显示地面
+modify_light: true  # 是否修改光照
+
+# 传送带配置
+conveyor:
+  name: "standard_belt_small"
+  instance_name: "palletizing_conveyor"
+  position: [-0.5, 0.0, 0.0]  # 传送带位置
+  auto_start: true  # 是否自动启动
+  initial_speed: 0.15  # 初始速度 (m/s)
+
+# 箱子配置
+storage_box:
+  name: "cardboard_box_medium"
+  instance_name: "pallet_box_A"
+  position: [0.8, -0.5, 0.0]  # 箱子位置 (Panda侧)
+  
+storage_box_2:
+  name: "cardboard_box_medium"
+  instance_name: "pallet_box_B"
+  position: [0.8, 0.5, 0.0]  # 箱子位置 (FR3侧)
+
+# 物体生成配置
+object_spawning:
+  enabled: true
+  object_types:
+    - type: "cube"
+      size: [0.05, 0.05, 0.05]  # 立方体尺寸
+      color: [255, 0, 0]  # 红色
+      mass: 0.1  # kg
+      probability: 0.5
+      
+    - type: "cylinder"
+      radius: 0.03
+      height: 0.06
+      color: [0, 255, 0]  # 绿色
+      mass: 0.08
+      probability: 0.3
+      
+    - type: "box"
+      size: [0.06, 0.04, 0.04]
+      color: [0, 0, 255]  # 蓝色
+      mass: 0.12
+      probability: 0.2
+  
+  spawn_rate: 3.0  # 生成频率 (秒/个)
+  spawn_position: [-0.3, 0.0, 0.82]  # 生成位置 (传送带装载区)
+  random_range:
+    x: 0.0
+    y: 0.1
+    z: 0.0
+
+# 抓取配置
+picking:
+  pick_height: 0.85  # 抓取高度
+  approach_offset: 0.15  # 接近偏移
+  retreat_height: 0.3  # 撤退高度
+  
+# 码垛配置
+stacking:
+  start_height: 0.05  # 起始高度
+  layer_height: 0.06  # 每层高度
+  place_offset: 0.02  # 放置偏移

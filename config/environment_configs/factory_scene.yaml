@@ -1,0 +1,36 @@
+# ============================================================
+# 文件: config/environment_configs/factory_scene.yaml
+# ============================================================
+
+environment_config:
+  scene_name: "factory_warehouse"
+  scene_type: "warehouse"
+  
+  # Isaac Sim 预制场景
+  base_scene:
+    use_builtin: true
+    builtin_path: "/Isaac/Environments/Simple_Warehouse/warehouse.usd"
+    prim_path: "/World/Environment"
+    
+  # 场景设置
+  settings:
+    ground_plane: false  # 预制场景已有地面
+    default_lighting: false  # 使用场景自带光照
+    physics_scene: true
+    
+  # 相机设置（俯视整个工厂）
+  camera:
+    position: [5.0, 0.0, 8.0]
+    rotation: [0.7071, 0.0, 0.0, -0.7071]  # 俯视
+    resolution: [1920, 1080]
+    fov: 90
+    
+  # 工作区域定义（用于放置你的机器人和物体）
+  work_zones:
+    - name: "palletizing_zone_1"
+      center: [2.0, 3.0, 0.0]
+      size: [3.0, 3.0, 2.0]
+      
+    - name: "palletizing_zone_2"
+      center: [2.0, -3.0, 0.0]
+      size: [3.0, 3.0, 2.0]

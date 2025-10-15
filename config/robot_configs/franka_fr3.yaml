@@ -1,0 +1,43 @@
+# ============================================================
+# 文件: robot_config/franka_fr3.yaml
+# ============================================================
+robot_config:
+  robot_name: "franka_fr3"
+  robot_type: "manipulator"
+  manufacturer: "Franka Emika"
+  
+  usd_path: "/Isaac/Robots/Franka/FR3/fr3.usd"
+  prim_path: "/World/FR3"
+  
+  root_position: [1.0, 0.0, 0.0]
+  root_orientation: [0.0, 0.0, 90.0]
+  
+  end_effector:
+    prim_name: "fr3_hand"
+    type: "parallel_gripper"
+    joint_names: ["fr3_finger_joint1", "fr3_finger_joint2"]
+    open_positions: [0.05, 0.05]
+    close_positions: [0.0, 0.0]
+    action_deltas: [0.005, 0.005]
+    max_effort: [140.0, 140.0]
+  
+  joints:
+    dof: 7
+    names: ["fr3_joint1", "fr3_joint2", "fr3_joint3", "fr3_joint4",
+            "fr3_joint5", "fr3_joint6", "fr3_joint7"]
+    home_positions: [0.0, -0.785, 0.0, -2.356, 0.0, 1.571, 0.785]
+    velocity_limits: [2.175, 2.175, 2.175, 2.175, 2.610, 2.610, 2.610]
+    effort_limits: [87.0, 87.0, 87.0, 87.0, 12.0, 12.0, 12.0]
+  
+  controller:
+    type: "rmpflow"
+    config_file: "fr3_rmpflow.yaml"
+  
+  workspace:
+    x_range: [-0.855, 0.855]
+    y_range: [-0.855, 0.855]
+    z_range: [0.0, 1.19]
+    
+  physics:
+    mass: 18.5
+    payload_capacity: 3.0

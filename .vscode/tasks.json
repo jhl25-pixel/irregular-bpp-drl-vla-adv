@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Isaac Sim: Run Current File",
+            "type": "shell",
+            "command": "/home/hljin/isaacsim/python.sh",
+            "args": [
+                "${file}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Isaac Sim: Run view_base.py",
+            "type": "shell",
+            "command": "/home/hljin/isaacsim/python.sh",
+            "args": [
+                "${workspaceFolder}/scripts/view_base.py"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        }
+    ]
+}
