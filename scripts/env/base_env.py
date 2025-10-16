@@ -93,7 +93,7 @@ def parse_args(config_path):
     parser.add_argument('--config', type=str, default=config_path, 
                         help='Path to the config file')
     cmd_args = parser.parse_args()
-    with open(cmd_args.config, 'r') as f:
+    with open(cmd_args.config, 'r', encoding='utf-8') as f:
         yaml_config = yaml.safe_load(f)
     args_dict = vars(cmd_args)  # 将args转换为字典
     args_dict.update(yaml_config)  # 用YAML配置更新字典
@@ -445,7 +445,7 @@ class Base_Env():
 
     def read_obj_pose_from_txt(self,path):
         pose_path = path
-        with open(pose_path, 'r') as file:
+        with open(pose_path, 'r', encoding='utf-8') as file:
             lines = file.readlines()
         matrix_data = []
         for line in lines:

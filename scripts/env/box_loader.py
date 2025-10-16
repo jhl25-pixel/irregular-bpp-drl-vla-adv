@@ -37,7 +37,7 @@ class BoxConfigLoader:
         print(f"\n发现 {len(yaml_files)} 个箱子配置文件:")
         
         for yaml_file in yaml_files:
-            with open(yaml_file, 'r') as f:
+            with open(yaml_file, 'r', encoding='utf-8') as f:
                 config_data = yaml.safe_load(f)
                 box_name = config_data['box_config']['box_name']
                 self.configs[box_name] = config_data['box_config']

@@ -40,7 +40,7 @@ class EnvironmentConfigLoader:
         
         for yaml_file in yaml_files:
             try:
-                with open(yaml_file, 'r') as f:
+                with open(yaml_file, 'r', encoding='utf-8') as f:
                     config_data = yaml.safe_load(f)
                     env_name = config_data['environment_config']['scene_name']
                     self.configs[env_name] = config_data['environment_config']

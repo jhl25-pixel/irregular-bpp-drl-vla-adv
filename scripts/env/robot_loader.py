@@ -41,7 +41,7 @@ class RobotConfigLoader:
         print(f"\n发现 {len(yaml_files)} 个机器人配置文件:")
         
         for yaml_file in yaml_files:
-            with open(yaml_file, 'r') as f:
+            with open(yaml_file, 'r', encoding='utf-8') as f:
                 config_data = yaml.safe_load(f)
                 robot_name = config_data['robot_config']['robot_name']
                 self.configs[robot_name] = config_data['robot_config']

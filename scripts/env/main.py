@@ -1,12 +1,12 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+
 import numpy as np
 from isaacsim import SimulationApp
 
 CONFIG = {
     "width": 1280,
     "height": 720,
-    "headless": True,
+    "headless": False,
     "hide_ui": True,
     "renderer": "PathTracing",
     "denoiser": False,
@@ -20,6 +20,7 @@ simulation_app = SimulationApp(CONFIG)
 
 from omni.isaac.core import World
 from omni.isaac.core.utils.nucleus import get_assets_root_path
+print("\n✓ Isaac Sim 启动完成，开始加载环境...")
 
 # 导入你的加载器
 from environment_loader import EnvironmentFactory
